@@ -1,0 +1,12 @@
+.hide {
+    display: none;
+}
+
+tr.rent_outer {
+    background-color: gray;
+    text-align: center;
+}
+
+thead.booking {
+    background-color: green;
+}

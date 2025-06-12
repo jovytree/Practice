@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Korea</title>
+    <link rel="stylesheet" href="css/structure.css">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {padding: 10px 20px;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- header section -->
+        <header>
+            <!-- logo -->
+            <div id="logo">
+                <a href="#"><h1>Dream Korea</h1></a>
+            </div>
+            <!-- header navigation -->
+            <nav>
+                <ul id="topMenu">
+                    <li><a href="#">Group Tour</a></li>
+                    <li><a href="#">Custom Travel</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="contents">
+            <audio src="audio/eona.mp3" autoplay loop controls></audio>
+            <section id="healing">
+                <h2>Discover Korea - <mark>A food lover's paradise</mark></h2>
+                <!-- quote -->
+                <blockquote><i>"All days are perfect days in Korea"</i></blockquote>
+                <strong>If you're a foodie, Korea is the perfect destination for you</strong>
+                <p><b>W</b>ith over 5000 years of history, <em><b>Korea has developed a remarkably diverse food culture.</b></em> 
+                    <br>Korean cuisine is built around several core principles: the art of fermentation,<br>
+                    the use of fresh seasonal ingredients, and the balance of flavors and nutrition.<br>
+                    This culinary tradition has been shaped by Korea's geography, climate, <br>
+                    and cultural exchanges throughout its long history.</p>
+                    
+                    <figure>
+                        <img 
+                        src="images/korean_food-medium.jpg"
+                        srcset="
+                        images/korean_food-small.jpg 400w,
+                        images/korean_food-medium.jpg 800w,
+                        images/korean_food-large.jpg 1200w"
+                        sizes="
+                        (max-width: 480px) 400px,
+                        (max-width: 1024px) 800px,
+                        1200px"
+                        alt="Korean food in a hot pot">
+                        <img
+                        src="images/noodle-medium.jpg"
+                        srcset="
+                        images/noodle-small.jpg 400w,
+                        images/noodle-medium.jpg 800w,
+                        images/noodle-large.jpg 1200w"
+                        sizes="
+                        (max-width: 480px) 400px,
+                        (max-width: 1024px) 800px,
+                        1200px"
+                        alt="korean noodle">
+                        <figcaption>diverse Korean food</figcaption>
+                    </figure>
+                    
+                <p>From the royal court cuisine of the Joseon Dynasty to humble street food found in bustling markets,<br>
+                    Korean food offers something for every palate.
+                    The concept of 'banchan' - an array of small side <br>dishes served with every meal - 
+                    showcases the Korean philosophy that dining should be a<br>communal experience filled with variety and abundance. 
+                    <i><b>Whether you're savoring spicy tteokbokki<br>from a street vendor, 
+                    enjoying a hearty bowl of bibimbap, or experiencing the interactive fun of Korean BBQ,</i></b><br> 
+                    each dish tells a story of tradition, innovation, 
+                    and the Korean people's deep connection to their land and seasons.</p>
+            </section>
+
+            <hr class="hide">
+
+            <section id="receipe">
+                <h2>Rose Tteokbokki Recipe</h2>
+                <dl>
+                    <dt><b>Ingredients :</b></dt>
+                    <dd>
+                    1 lb (450g) fresh or frozen tteok <small>(rice cakes)</small><br>
+                    3 tbsp gochujang <br>2 tbsp tomato paste <br>1/4 cup heavy cream or milk <br>2 tbsp soy sauce
+                    <br>1 tbsp sugar <br>2 cloves garlic, minced <br>1 tbsp vegetable oil
+                    </dd>
+                </dl>
+                <ol>
+                    <li><b>Prepare the rice cakes:</b> If using frozen rice cakes, soak them in warm water for 10 minutes until soft.</li>
+                    <li><b>Make the sauce:</b> In a small bowl, mix gochujang, tomato paste, soy sauce, and sugar until well combined.</li>
+                    <li><b>Cook aromatics:</b> Heat oil in a large pan over medium heat. Add minced garlic and sliced onion (if using). Cook for 2-3 minutes until fragrant.</li>
+                    <li><b>Add sauce:</b> Add the gochujang mixture to the pan and stir for 1 minute.</li>
+                    <li><b>Add liquid:</b> Pour in 1 cup of water and bring to a boil.</li>
+                    <li><b>Cook rice cakes:</b> Add the rice cakes and any additional ingredients like fish cakes. Cook for 8-10 minutes, stirring occasionally, 
+                        until the sauce thickens and rice cakes are tender.</li>
+                    <li><b>Create the rose color:</b> Lower the heat and slowly stir in the heavy cream until you achieve a beautiful rose color.</li>
+                    <li><b>Finish:</b> Add green onions and cheese (if using). Cook for another 2 minutes.</li>
+                    <li><b>Serve:</b> Garnish with sesame seeds and serve hot!</li>
+                </ol>
+                <b>Tips:</b>
+                <ul>
+                    <li>Adjust the cream amount for your preferred shade of pink</li>
+                    <li>Add more gochujang for extra spice</li>
+                    <li>The sauce should coat the rice cakes nicely - add more water if too thick</li>
+                </ul>
+                <p><b>Prep time:</b> 10 minutes | <b>Cook time:</b> 15 minutes | <b>Serves:</b> 2-3 people</p>
+            </section>
+
+            <hr class="hide">
+
+            <section id="booking">
+                <table>
+                    <h2>booking room</h2>
+                    <caption>Room available for booking</caption>
+                    <thead class="booking">
+                        <tr>
+                            <th>Room name</th>
+                            <th>Target Guests</th>
+                            <th>Room size</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Yuchae Room</td>
+                            <td>Female</td>
+                            <td rowspan="3">4-person room</td>
+                            <td rowspan="4">20,000 KRW per person</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Dongbaek Room</td>
+                            <td>same gender</td>
+                        </tr>
+                        <tr>
+                            <td>family group</td>
+                        </tr>
+                        <tr>
+                            <td>Cheonhyehyang Room</td>
+                            <td>-</td>
+                            <td>2-person room</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="rent_outer">
+                            <td colspan="4">rent out the entire outer building</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+
+            <hr class="hide">
+
+            <section id="Dokdo">
+                <h2>Want to Learn More About Korea?</h2>
+                <div class="Dokdo_video_container">
+                    <iframe 
+                    width="560" height="315" 
+                    src="https://www.youtube.com/embed/mEF9FDh4nZc?si=zkUq5QuFU5VuyIaJ" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+
+            <section id="Korea_Ministry">
+                <p>For more helpful information, click the image below</p>
+                <p><a href="https://www.mofa.go.kr/eng/index.do" target="_blank"><img src="images/Ministry.png" width="250" alt="Ministry of Foreign Affairs"></a></p>
+            </section>  
+        </main>
+    </div>
+</body>
+<footer>
+    <nav>
+        <a href="#logo">Back to the top</a>
+    </nav>
+
+    <p><cite>ⓒ jovytree</cite></p>
+</footer>
+</html>
