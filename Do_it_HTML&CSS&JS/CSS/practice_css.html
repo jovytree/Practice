@@ -1,135 +1,57 @@
-<!-- 
-스타일 우선순위
-
-1. !important
-2. 인라인
-3. id
-4. 클래스
-5. 타입
-
--->
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>practice</title>
+    <title>cat_in_the_bag</title>
     <!-- 외부 스타일 시트 -->
     <link rel="stylesheet" href="css/style.css" >
-    <!-- 내부 스타일 시트 -->
-    <style>
 
-        /* 구글 웹 폰트 사용하기 */
-        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100..900&display=swap');
-
-        /* 아이디로 스타일 적용하기 */
-
-        #container {
-            width: 600px;
-            margin: 10px auto; /* 중앙배치 */
-            padding: 10px; /* 태두리와 내용 사이 여백 */
-            border: 1px solid #000;
-            background-color: white !important; /* 가장 높은 우선순위로 지정하는 !important */
-        }
-
-        /* 클래스로 적용할 스타일 정해두기 */
-
-        .hahmlet {
-            font-family: "Hahmlet", serif;
-        }
-        
-        .accent {
-            border: 1px solid #000
-        }
-
-        .bg {
-            background-color: hsl(300, 50%, 80%);
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .small-line {
-            line-height: 1.5;
-        }
-
-        .big-line {
-            line-height: 2.5;
-        }
-
-        /* 전체선택자 */
-
-        * {
-            margin: 0; /* 여백 없애기 */
-
-            background-color: wheat;
-        }
-
-        /* 타입 선택자 */
-
-        p, span {
-            font-style: italic;
-            background-color: white;
-        }
-
-        span {
-            padding: 3px;
-        }
-
-        h1, h2 {
-            font-weight: 700;
-            font-style: normal;
-            font-size: 30px;
-            padding: 10px;
-            background-color: rgba(0, 0, 255, 0.2);
-            color: blueviolet;
-        }
-
-
-    </style>
-
+    <!-- 어썸 폰트 아이콘 사용하기 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
+    <header>
+        <div id="logo">
+            <a href="#">
+                <img src="images/logo.png" alt="빨간 벽돌 굴뚝" class="logo-img">
+                <h1>가방 속 고양이</h1>
+            </a>
+        </div>
+    </header>
+
     <main>
 
         <!-- 아이디로 스타일 적용 -->
         <section id="container">
 
-            <h1 class="accent hahmlet">가방에 들어간 고양이</h1>
+            <h2 class="accent title">챕터1 - 가방에 들어간 고양이</h2>
 
             <!-- 인라인 스타일 + 폰트 패밀리 사용 -->
-            <p class="small-line"
-            style="color: rgb(80, 34, 3); 
-                font-family: 
-                'Franklin Gothic Medium', 
-                'Arial Narrow', Arial, 
-                sans-serif;">
-                여행을 가려고 짐을 싸고 있는 와중에 모르는 고양이가 가방에 들어간 것을 발견했다. <br> 고양이가 같이 여행을 가고 싶은 것처럼 보이지만, 대부분의 고양이는 장거리 이동에 큰 스트레스를 받는다.</p>
-            <img src="images/cat.jpg" alt="가방에 들어간 고양이" width="30%">
-            <p class="center big-line">'어쩌지..'<br>고민하던 당신은 고양이의 의견을 물어보기로 했다.</p>
+            <p class="small-line">
+                여행을 가려고 짐을 싸고 있는 와중에 모르는 고양이가 가방에 들어간 것을 발견했다. <br> 
+                고양이가 같이 여행을 가고 싶은 것처럼 보이지만, 대부분의 고양이는 장거리 이동에 큰 스트레스를 받는다.</p>
+            <img class="center" src="images/cat.jpg" alt="가방에 들어간 고양이" width="35%">
+            <p class="center big-line">'어쩌지..'</p>
+            <p class="center big-line" style="text-decoration: underline;">고민하던 당신은 고양이의 의견을 물어보기로 했다.</p>
 
             <!-- 클래스로 스타일 적용 -->
             <!-- 타입선택의 background color 보다 클래스 우선순위가 높아서 bg 클래스 배경색이 적용됨 -->
-            <h2 class="accent bg hahmlet center">"안녕?"</h2> 
+            <h2 class="center hahmlet" style="background-color: white;">"안녕?"</h2> 
             <p class="center big-line">당신의 말에 <span class="accent">고양이</span>가 깨어났다.</p>
         
         </section>
         
         <section>
             <form action="post" class="center hahmlet">
-            <legend>당신의 선택에 따라 여정이 달라집니다.</legend>
-            <label for="game_start">고양이와 대화를 하시겠습니까?</label>
-            <!-- <input type="button" id="game_start" value="게임 시작" style="background-color: aqua;"> -->
-            <!-- 버튼 안에 물고기 아이콘 넣고 싶어서 input -> button으로 변경 -->
-            <button type="button" id="game_start" style="background-color: aqua;">
-                <i class="fa-solid fa-fish" style="background-color: aqua;"></i>게임시작</button>
-        </form>
+                <legend>당신의 선택에 따라 여정이 달라집니다.</legend>
+                <label for="game_start">고양이와 대화를 하시겠습니까?</label>
+                <!-- <input type="button" id="game_start" value="게임 시작" style="background-color: aqua;"> -->
+                <!-- 버튼 안에 물고기 아이콘 넣고 싶어서 input -> button으로 변경 -->
+                <button type="button" id="game_start" style="background-color: aqua;">
+                    <i class="fa-solid fa-fish" style="background-color: aqua;"></i>게임시작</button>
+            </form>
         </section>
 
     </main>

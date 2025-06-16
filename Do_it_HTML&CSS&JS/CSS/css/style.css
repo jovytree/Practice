@@ -1,5 +1,155 @@
-/* 외부 스타일 시트 */
+/* 스타일 우선순위
 
-h1 {
-    background-color: yellowgreen;
+1. !important
+2. 인라인
+3. id
+4. 클래스
+5. 타입
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100..900&display=swap');
+
+
+/* 전체선택자 */
+
+* {
+    margin: 0; 
+    /* 여백 없애기  */
 }
+
+/* 타입 선택자 */
+
+p, span {
+    font-family: "Hahmlet", serif;
+    background-color: white;
+}
+
+span {
+    padding: 3px;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(218, 217, 217);
+    font-family: "Hahmlet", serif;
+}
+
+section {
+    overflow: auto; /* 마진 상쇄 방지 */
+}
+
+
+ /* 아이디 */
+
+#logo a {
+    font-family: "Hahmlet", serif;
+    display: flex;
+    align-items: center;  /* 세로 가운데 정렬 */
+    text-decoration: none;  /* 밑줄 제거 */
+    color: inherit;  /* 기본 글자색 유지 */
+}
+
+
+.logo-img {
+    max-width: 40px;
+    width: 20%;
+    height: 40px;
+    margin-right: 10px;
+}
+
+#container {
+            max-width: 600px;
+            width: 90%;        /* 화면의 90% 사용 */
+            margin: 10px auto; /* 중앙배치 */
+            padding: 10px; /* 태두리와 내용 사이 여백 */
+            border-style: double;
+            border-width: 5px;
+            background-color: white !important; /* 가장 높은 우선순위로 지정하는 !important */
+        }
+
+/* 클래스로 적용할 스타일 정해두기 */
+
+.hahmlet {
+    font-family: "Hahmlet", serif;
+}
+
+.title {
+    font-family: "Hahmlet", serif;
+    font-weight: 700;
+    font-size: 30px;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    border: 1px solid #000;
+    position: relative;
+}
+
+.title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/pattern.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.07; /* 배경만 투명하게 */
+    
+}
+
+.accent {
+    border: 1px solid #000
+}
+
+.box1 {
+    box-sizing: border-box;
+    width: calc(100% - 20px); /* 마진 공간 확보 */
+    height: auto;
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: white;
+    margin: 10px !important;
+}
+
+.center {
+    text-align: center;
+    display: block;
+    margin: 0 auto; /* 이미지 가운데 정렬을 위해 추가 */
+}
+
+.small-line {
+    line-height: 1.5;
+}
+
+.big-line {
+    line-height: 2.5;
+}
+
+/* 글자간격 */
+
+.spacing {
+    letter-spacing: 0.2em;
+}
+
+
+
+#wrapper {
+    width: auto;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* 라운드 버튼 */
+
+.round_button {
+    font-family: "Hahmlet";
+    border-radius: 15px;
+    background-color: white;
+    border: 2px solid #000;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+
