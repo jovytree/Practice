@@ -3,10 +3,45 @@
 }
 
 tr.rent_outer {
-    background-color: gray;
+    background-color: rgb(194, 186, 186);
     text-align: center;
 }
 
 thead.booking {
-    background-color: green;
+    background-color: rgba(28, 104, 28, 0.568);
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {padding: 10px 20px;}
+
+
+/* nav의 자식인 ul에만 적용하겠다 */
+/* ul/li의 기본 점(불릿)을 없애는 것을 */
+nav > ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block; /* 인라인 레벨처럼 나란히 배치하지만, 블록 레벨처럼 너비와 높이를 지정할 수 있다. */
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 10px;
+    padding: 3px;
+    border: 1px solid #222;
+}
+
+/* a 태그의 하이퍼링크 표시를 없애겠다 (파란색+밑줄) */
+a {
+    text-decoration: none;
+}
+
+img {
+    float: left;
+    margin-right: 10px;
 }

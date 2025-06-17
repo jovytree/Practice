@@ -1,0 +1,101 @@
+<!-- 
+1. 카드는 모두 class="travel-card" 속성을 사용했으므로 travel-card라는 클래스 스타일을 만들어야 한다.
+2. 카드의 너비는 250px, 높이는 340px로 지정하고 회색(#ccc) 테두리를 그린다. 테두리는 20px 둥굴게, 패딩은 10
+3. 카드 이미지는 원형
+4. 텍스트 가운데 정렬
+5. float로 가로 배치. 오른쪽 마진 20px
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여간 시간 즐기기</title>
+  <style>
+    .travel-card {
+        max-width: 250px;
+        width: auto;
+        height: 340px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        float: left;
+        margin-right: 20px;
+        text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: #222;
+    }
+    #travel {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .title-text {
+      text-align: center;
+    }
+    .title-text > h2 {
+      font-size: 2.5em;
+      color: #919191;
+    }
+    .title-text > p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+    .travel-list {
+      padding-top: 20px;      
+    }    
+    .travel-card img {
+      width: 150px;
+      height: 150px;
+      margin: 15px;
+      border-radius: 50%;
+    }
+    .travel-card p {
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="travel">
+    <div class="title-text">
+      <h2>여가 시간 즐기기</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, in! Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div class="travel-list">
+      <div class="travel-card">
+        <a href="#">
+          <img src="images/tr-1.png">
+          <h3>도심 투어</h3>
+          <p>Lorem ipsum dolor sit. Lorem ipsum dolor sit.</p>
+        </a>
+      </div>
+      <div class="travel-card">
+        <a href="#">
+          <img src="images/tr-2.png">
+          <h3>바다 즐기기</h3>
+          <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </a>
+      </div>
+      <div class="travel-card">
+        <a href="#">
+          <img src="images/tr-3.png">
+          <h3>등산 도전하기</h3>
+          <p>Lorem ipsum dolor sit amet. Lorem, ipsum dolor.</p>
+        </a>
+      </div>
+      <div class="travel-card">
+        <a href="#">
+          <img src="images/tr-4.png">
+          <h3>관광지 투어</h3>
+          <p>Lorem, ipsum dolor. Lorem ipsum dolor sit amet.</p>
+        </a>
+      </div>    
+    </div>
+  </div>
+</body>
+</html>
