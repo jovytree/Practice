@@ -26,7 +26,8 @@ nav > ul {
 }
 
 nav ul li {
-    display: inline-block; /* 인라인 레벨처럼 나란히 배치하지만, 블록 레벨처럼 너비와 높이를 지정할 수 있다. */
+    display: inline-block; 
+    /* 인라인 레벨처럼 나란히 배치하지만, 블록 레벨처럼 너비와 높이를 지정할 수 있다. */
     width: 100px;
     height: 40px;
     line-height: 40px;

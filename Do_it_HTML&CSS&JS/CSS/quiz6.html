@@ -1,0 +1,54 @@
+<!-- 
+1. flex-wrap 속성으로 여러줄 표시 가능하게
+2. 1025px 이상일 경우 기본으로 두고, 미디어 쿼리를 사용해 768px 이하일 경우와 769~1024px 일 경우 배치 방법을 다르게
+3. 768px 이하일 경우를 기본으로 두고, 나머지 2가지 경우를 미디어 쿼리로 지정
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Box Layout</title>
+  <style>    
+    /* 이미지 스타일링 */
+    .pic img {
+      width: 100%; /* 이미지가 .pic 에 가득차도록 */
+      height: auto; /* 이미지의 비율을 유지 */
+    } 
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+    }
+    .pic {
+        flex-basis: 32%;
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .pic {
+            flex-basis: 49%;
+        }
+    }
+    @media (max-width: 768px) {
+        .pic {
+            flex-basis: 100%;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="pic">
+      <img src="images/kitten-1.jpg" alt="아기 고양이 사진">
+    </div>
+    <div class="pic">
+      <img src="images/kitten-2.jpg" alt="아기 고양이 사진">
+    </div>
+    <div class="pic">
+      <img src="images/kitten-3.jpg" alt="아기 고양이 사진">
+    </div>
+  </div>
+</body>
+</html>
