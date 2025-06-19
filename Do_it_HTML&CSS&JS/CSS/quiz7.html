@@ -1,0 +1,61 @@
+<!-- 
+# 조건
+1. fr 단위를 사용하세요
+2. 각 항목 간의 간격은 10px
+3. 홀수 번째 항목과 짝수 번째 항목의 배경색을 다르게 지정합니다.
+
+# 힌트
+1. 열 3개와 행 3개는 같은 크기로 반복하므로 repeat()함수와 fr단위를 사용합니다.
+2. div 영역 9개에 클래스 이름이 따로 없으므로 자식 선택자(>)를 사용해 스타일을 지정합니다.
+3. 홀수 번째와 짝수 번째를 선택하려면 :nth-child() 선택자를 사용합니다.
+-->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>연습문제</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {      
+        display: grid;
+        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+        width: 600px;
+        height: 500px;
+        gap:10px;
+    }
+    .container > div {
+      border: 1px solid #222;
+      text-align: center;
+    }
+
+    .container > div:nth-child(odd) {
+        background-color: rgb(191, 255, 0);
+    }
+
+    .container > div:nth-child(even) {
+        background-color: rgb(244, 255, 146);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+  </div>
+</body>
+</html>
