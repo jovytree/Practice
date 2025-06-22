@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수 호이스팅</title>
+</head>
+<body>
+  <script>		 
+    // Do it! 변수 호이스팅 확인하기
+
+    var x = 10;  // 전역 변수 선언
+
+		function displayNumber() { 								
+      console.log(`x is ${x}`); // x is 10
+      console.log(`y is ${y}`); // y is undefinde -> 변수는 선언했지만 값이 할당되지 않았을 때 나오는 변수의 값 undefinde
+      //  y 변수가 console.log 다음에 선언됐는데 왜 변수가 선언된 것처럼 undefinde 값이 나올까? 
+      // 자바스크립트 해석기가 자바스크립트 코드를 훑어보면서 변수를 따로 기억하는 '변수 호이스팅'을 이해하면 된다.
+      var y = 20;  // 지역 변수 선언 및 값 할당
+		}
+
+    displayNumber();
+  </script>
+</body>
+</html>

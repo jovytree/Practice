@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>짝수 더하기</title>
+  <style>
+    body {
+      font-size:2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+	<h1>짝수끼리 더하기</h1>
+	<script>
+		// Do it! 1부터 10까지 짝수만 더하기
+    let n = 10;
+    let sum = 0;
+
+    for (let i = 1; i<=n; i++) { // i는 1부터 시작한다. n보다 크거나 작다면, i를 1개씩 늘리면서 반복 실행한다.
+      if (i % 2 === 1) { // 홀수일 경우 더하지 않고 건너뛰겠다
+        continue
+      }
+      sum += i; // 그렇게 나온 i를 하나씩 sum에 더하겠다.
+
+      document.write(`${i} ----- ${sum} <br>`);
+    }
+
+	</script>
+</body>
+</html>

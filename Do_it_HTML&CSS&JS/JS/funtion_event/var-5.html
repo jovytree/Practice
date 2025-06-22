@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블록 스코프</title>
+</head>
+<body>
+	<script>		
+    // Do it! let 변수를 사용해 1부터 10까지 더하는 코드를 작성하기
+    // var 예약어를 빠뜨리면 의도하지 않게 전역변수가 되기도 하고
+    // 프로그램 길이기 길어지다가 실수로 변수 재선언이 되기도 한다
+    // 그래서 블록 스코프 let, const 예약어가 나왔다.
+
+    // var는 함수 영역의 스코프
+    // let, const는 블록 영역의 스코프
+    // {}로 묶은, 변수를 선언한 블록에서만 유효함.
+
+    function sum() {
+      let n = 10;
+      let result = 0;
+
+      for (let i = 1; i <= n; i++) {
+        result += i;
+      }
+      console.log(result); // 이건 같은 블록 스코프에 있어서 결과가 나오는데
+    }
+
+    sum();
+    console.log(result);//Uncaught ReferenceError: result is not defined
+
+
+  </script>
+</body>
+</html>

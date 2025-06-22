@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>재선언과 재할당</title>
+</head>
+<body>
+	<script>		
+    // Do it! 변수의 재선언과 재할당
+    var seed = 3; //3의 배수를 만들어보자
+    for (let i = 1; i <= 5; i++) {
+      var seed = 5; // 재선언 - var를 사용하면 서로 다른 개발자들이 실수로 겹치는 변수를 사용하는 재선언 오류가 발생하기도 한다.
+      var result = seed * i;;
+      console.log(result);
+    }
+
+  </script>
+</body>
+</html>
