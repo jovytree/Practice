@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #detail {
+      border: 1px solid #000;
+      padding: 30px;
+      margin: 10px;
+    }
+    #detail h2 {
+      font-size: 1.5em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="detail">
+    <ul>
+      <li>원산지 : 에디오피아</li>
+      <li style="display: none">지 역 : 이르가체프 코체레</li>
+      <li style="display: none">농 장 : 게뎁</li>
+    </ul>
+  </div>
+
+  <script>
+    // Do it! DOM을 사용해 텍스트에 접근하기
+    let detail = document.querySelector('#detail > ul');
+    console.log(detail.innerText); // innerText 프로퍼티는 웹 브라우저 창에 보이는 내용만 가져온다. displat: none을 사용해서 화면에 감춘 내용은 가져오지 않는다.
+    console.log(detail.innerHTML); // innerHTML 프로퍼티는 HTML 코드를 가져온다. 화면에 보이는 것과 상관없이 코드에 있는 걸 모두 가져온다. 
+    console.log(detail.textContent); // textContent 프로퍼티는 접근한 요소의 내용을 가져오되 코드에 있는 대로 가져온다. 
+
+  </script>
+</body>
+</html>
