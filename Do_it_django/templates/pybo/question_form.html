@@ -4,9 +4,36 @@
     <h5 class="my-3 border-bottom pb-2">질문 등록</h5>
     <form method="post" class="post-form my-3">
         {% csrf_token %}
-        {{ form.as_p }}
-        {# form이 question_create 함수에서 전달한 QuestionForm 객체. #}
-        {# form.as_p는 모델 폼과 연결된 입력 항목 subject, content에 값을 입력할 수 있는 HTML 코드를 자동으로 만들어준다. #}
+{#        {{ form.as_p }}#}
+        <!-- 오류 표시 Start -->
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+        <!-- 오류 표시 End -->
+
+        <!--
+        question_create 함수에서 form.is_vaild()가 실패했을 때 오류를 표시하기 위해 오류 표시 영역도 추가됐다.
+        제목의 value에는 form.subject.value|default_if_none:''을 대입했는데, 오류 발생 시 기존 입력값을 유지하기 위함이다.
+        default_if_none:''은 from.subject.value에 값이 없으면 'None'이라는 문자열이 표시되는데,
+        이를 공백으로 표시하기 위해 사용된 템플릿 필터다.
+        -->
+        <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" id="subject"
+                value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content" id="content"
+                      rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
         <button type="submit" class="btn btn-primary">저장하기</button>
     </form>
 </div>

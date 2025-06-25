@@ -41,6 +41,18 @@
     <form action="{% url 'pybo:answer_create' question.id %}"
           method="post" class="my-3">
         {% csrf_token %} {# form 엘리먼트를 통해 전송된 데이터가 실제로 웹 브라우저에 작성된 데이터인지 판단하는 검사기 역할을 한다. #}
+        <!-- 오류 표시 영역 시작 -->
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                    <strong>{{ field.label }}</strong>
+                    {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+        <!-- 오류 표시 영역 끝 -->
         <div class="form-group">
             <textarea name="content" id="content"
                       class="form-control" rows="10"></textarea>
