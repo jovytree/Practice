@@ -9,3 +9,15 @@ class QuestionForm(forms.ModelForm):
     class Meta: # 장고 모델 폼은 내부 클래스로 Meta 클래스를 반드시 가져야 한다.
         model = Question # 폼이 사용할 모델
         fields = ['subject', 'content'] # 필드들을 적어야 한다.
+
+        # form.as_p 태그는 부트스트랩을 적용할 수 없다는 단점이 있다.
+        # 완벽하지는 않지만, widgets 속성을 아래와 같이 추가하면 해결할 수 있다.
+        widgets = {
+            'subject': forms.TextInput(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+        labels = {
+            'subject': '제목',
+            'content': '내용',
+        }

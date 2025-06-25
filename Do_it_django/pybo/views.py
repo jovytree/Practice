@@ -43,5 +43,18 @@ def question_create(request):
     """
     pybo 질문 등록
     """
-    form = QuestionForm()
-    return render(request, 'pybo/question_form.html', {'form': form})
+    # 질문 목록 화면에서 '질문 등록하기' 버튼을 누르면 get 방식으로 요청돼 질문 등록 화면이 나타나고,
+    # 질문 등록 화면에서 입력값을 채우고 '저장하기' 버튼을 누르면 post 방식으로 요청돼 데이터가 저장된다.
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid(): # post 요청으로 받은 form이 유효한지 검사
+            question = form.save(commit=False) # commit=Flase 는 임시저장을 한다는 뜻이다.
+            # 폼에 현재 subject, content 필드만 있고 create_date 필드는 없으므로 임시저장 후
+            # question 객체를 반환받아 create_date 에 값을 설정한 뒤 question.save()로 실제 저장한다.
+            question.create_date = timezone.now()
+            question.save()
+            return redirect('pybo:index')
+    else: # request.method가 GET인 경우 호출
+        form = QuestionForm()
+    context = {'form': form}
+    return render(request, 'pybo/question_form.html', context)
