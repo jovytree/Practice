@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Question
 from django.utils import timezone
+from .forms import QuestionForm
 
 # Create your views here.
 def index(request):
@@ -38,3 +39,9 @@ def answer_create(request, question_id):
     # 답변 생성 후 상세 화면 호출. redirect 함수 첫 번째 인수에는 이동할 페이지의 별칭을,
     # 두 번째 인수에는 해당 URL에 전달해야 하는 값을 입력한다.
 
+def question_create(request):
+    """
+    pybo 질문 등록
+    """
+    form = QuestionForm()
+    return render(request, 'pybo/question_form.html', {'form': form})

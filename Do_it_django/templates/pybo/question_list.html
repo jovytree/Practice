@@ -1,9 +1,5 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-
-{# 기존에는 질문 목록을 ul 엘리먼트로 간단히 표시했지만, 여기서는 table 엘리먼트로 바꾸고, 질문의 일련번호와 작성일시 항목도 추가했다.#}
-{# 질문의 일련번호는 {{ forloop.counter }}를 이용해 표시했다. {{ forloop.counter }}는 {% for... %}에서 반복 시 자동으로 #}
-{# 매겨지는 순서값을 의미한다. #}
+{% extends 'base.html' %}
+{% block content %}
 
 <div class="container my-3">
     <table class="table">
@@ -34,4 +30,10 @@
         {% endif %}
         </tbody>
     </table>
+{#질문 등록 버튼을 만들어보자#}
+    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">
+        질문 등록하기
+    </a>
 </div>
+
+{% endblock %}

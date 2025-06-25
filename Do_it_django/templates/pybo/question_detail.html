@@ -1,5 +1,5 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+{% extends 'base.html' %}
+{% block content %}
 
 {# 부트스트랩 card 컴포넌트 사용 #}
 {# style 속성으로 white-space: pre-line으로 질문 내용, 답변 내용의 텍스트 줄바꿈 잘 보이게 함 #}
@@ -49,3 +49,5 @@
         <input type="submit" value="답변 등록" class="btn btn-primary">
     </form>
 </div>
+
+{% endblock %}
