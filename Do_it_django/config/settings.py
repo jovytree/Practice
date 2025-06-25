@@ -55,7 +55,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # DIRS에는 템플릿 디렉터리를 여러개 등록할 수 있다.
+        # 현재 BASE_DIR은 Do_it_django 디렉토리를 의미하므로, BASE_DIR / "templates"는 템플릿 파일들이 위치하는 전역 템플릿 디렉토리인 Do_it_django/templates 경로를 가리킨다
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,6 +117,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# 웹 페이지에 디자인을 적용하려면 css를 사용해야 하며, 스타일시트를 파이보에 적용하려면 css 파일이 스태틱 디렉터리에 있어야 한다.
+# 스테틱 디렉터리 경로 추가.
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
