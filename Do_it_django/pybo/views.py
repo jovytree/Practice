@@ -3,14 +3,39 @@ from django.http import HttpResponse
 from .models import Question
 from django.utils import timezone
 from .forms import QuestionForm, AnswerForm
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
     """
     pybo 목록 출력
     """
+    # 입력 인자
+    page = request.GET.get('page', '1')
+    # 1은 ?page=1과 같은 page 파라미터가 없는 url을 위해 기본값을 1로 지정한 것이다
+
+    # 조회
     question_list = Question.objects.order_by('-create_date') # -create_date는 -기호로 작성일시의 역순을 의미한다.
-    context = {'question_list': question_list} # 조회한 Question 모델 데이터를 context 변수에 저장했다. render 함수가 템플릿을 HTML로 변환하는 과정에서 사용되는 데이터다.
+
+    # 페이징 처리
+    paginator = Paginator(question_list, 10) # 페이지당 10개씩 보여달라
+    # Pageinator 클래스는 qeustion_list를 페이징 객체 paginator로 변환한다.
+    # 두 번째 파라미터인 10은 페이지당 보여줄 게시물 개수를 의미한다.
+
+    page_obj = paginator.get_page(page)
+    # page_obj = paginator.get_page(page)로 만들어진
+    # page_obj 객체에는 다음과 같은 속성들이 있다. 장고의 Paginatior 클래스를 이용하면 다른 속성들을 사용할 수 있어서 페이징 처리가 쉬워진다.
+    # - pageinator.count 전체 게시물 개수
+    # - paginator.per_page 페이지당 보여줄 게시물 개수
+    # - number 현재 페이지 번호
+    # - previous_page_number 이전 페이지 번호
+    # - next_page_number 다음 페이지 번호
+    # - has_previous 이전 페이지 유무
+    # - has_next 다음 페이지 유무
+    # - start_index 현재 페이지 시작 인덱스(1부터 시작)
+    # - end_index 현재 페이지의 끝 인덱스(1부터 시작)
+
+    context = {'question_list': page_obj} # 조회한 Question 모델 데이터를 context 변수에 저장했다. render 함수가 템플릿을 HTML로 변환하는 과정에서 사용되는 데이터다.
     # render 함수는 context에 있는 Question 모델 데이터 question_list 를 pybo/question_list.html 파일에 적용해 HTML 코드로 변환한다.
     return render(request, 'pybo/question_list.html', context)
     # return HttpResponse("안녕하세요 pybo에 오신 것을 환영합니다.")
