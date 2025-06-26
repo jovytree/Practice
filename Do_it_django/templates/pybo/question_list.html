@@ -21,6 +21,11 @@
                 <a href="{% url 'pybo:detail' question.id %}">
                     {{ question.subject }}
                 </a>
+                {% if question.answer_set.count > 0 %} {# 질문에 달린 답변의 개수 표시하기 #}
+                <span class="text-danger small ml-2">
+                    {{ question.answer_set.count }}
+                </span>
+                {% endif %}
             </td>
             <td>{{ question.create_date }}</td>
         </tr>
