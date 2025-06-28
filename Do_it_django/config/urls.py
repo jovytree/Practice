@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')), # pybo/로 시작되는 페이지 요청은 모두 pybo/urls.py 파일에 있는 url 매핑을 참고해서 처리하라는 의미
     path('common/', include('common.urls')),
+    path('', views.index, name='index'), # / 페이지에 해당하는 urlpatterns
 ]

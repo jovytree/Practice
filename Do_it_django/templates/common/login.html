@@ -8,6 +8,12 @@
                 <label for="username">사용자 ID</label>
                 <input type="text" class="form-control" name="username" id="username"
                 value="{{ form.username.value|default_if_none:'' }}">
+                {# django에서 |는 템플릿의 필터 연산자다. 앞의 값을 뒤의 필터로 처리한다는 의미 #}
+                {# form : view에서 전달받은 폼 객체 #}
+                {# username : 폼의 username 필드 #}
+                {# value : 해당 필드의 현재 값 #}
+                {# default_if_none: Django의 내장 템플릿 필터 #}
+                {# :'' 필터의 매개변수 (빈 문자열) #}
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>

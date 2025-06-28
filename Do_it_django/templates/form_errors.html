@@ -1,12 +1,12 @@
 {# 필드 오류 : 입력값이 누락됐거나 형식에 맞지 않음 #}
 {# 넌필드 오류 : 입력값과 관계없이 발생한 오류 #}
 
-{% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %} <!--필드 오류를 출력한다 -->
+{% if form.errors %} {# form에 에러가 있는지 확인하는 조건문 #}
+    {% for field in form %} {# form의 field를 순회. 여기서 field는 이름, 비밀번호 같은 각각의 폼 필드를 의미한다. #}
+        {% for error in field.errors %} <!--필드 오류를 출력한다 --> {# 각 필드에 여러 오류가 있을 수 있으므로 순회 #}
             <div class="alert alert-danger">
-                <strong>{{ field.label }}</strong>
-                {{ error }}
+                <strong>{{ field.label }}</strong> {# 필드의 라벨명 #}
+                {{ error }} {# 실제 에러 메시지 #}
             </div>
         {% endfor %}
     {% endfor %}
