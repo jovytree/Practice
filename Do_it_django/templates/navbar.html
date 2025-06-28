@@ -8,7 +8,19 @@
     </button>
     <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="{% url 'common:login' %}" class="nav-link">로그인</a></li>
+            <li class="nav-item">
+            {# 현재 로그인 상태를 판별해 로그인 상태라면 로그아웃 링크를, 로그아웃 상태면 로그인 링크를 보여준다. #}
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'common:logout' %}">
+                    {% csrf_token %}
+                    <button class="nav-link" type="submit" style="border: none; background: none; outline: none;">
+                        {{ user.username }} (로그아웃)
+                    </button>
+                    </form>
+                {% else %}
+                <a href="{% url 'common:login' %}" class="nav-link">로그인</a>
+                {% endif %}
+            </li>
         </ul>
     </div>
 </nav>

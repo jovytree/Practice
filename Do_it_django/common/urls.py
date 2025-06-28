@@ -11,4 +11,5 @@ urlpatterns = [
     # LoginView 클래스는 registration이라는 템플릿 디렉터리에서 login.html 파일을 찾는다.
     # 하지만 우리는 로그인을 common 앱에 구현할 것이므로, registration 디렉터리에 템플릿 파일을 생성하기 보다는,
     # common 디렉터리에 템플릿을 생성하는 것이 좋다.
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
