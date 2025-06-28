@@ -1,5 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from . import views
 
 app_name = 'common'
 
@@ -12,4 +13,5 @@ urlpatterns = [
     # 하지만 우리는 로그인을 common 앱에 구현할 것이므로, registration 디렉터리에 템플릿 파일을 생성하기 보다는,
     # common 디렉터리에 템플릿을 생성하는 것이 좋다.
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('signup/', views.signup, name='signup'),
 ]
