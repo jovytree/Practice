@@ -27,6 +27,11 @@
             <div class="my-3">
                 <a href="{% url 'pybo:question_modify' question.id %}"
                    class="btn btn-sm btn-outline-secondary">수정</a>
+                {# 삭제 버튼 #}
+                <a href="#" class="delete btn btn-sm btn-outline-secondary"
+                data-uri="{% url 'pybo:question_delete' question.id %}">삭제</a>
+                {# data-uri : 제이쿼리에서 ${this}. data('uri')와 같이 사용해서 그 값을 얻을 수 있는 속성 #}
+                {# 삭제 함수가 실행되도록 class 속성에 delete 항목도 추가됐다. #}
             </div>
         {% endif %}
     </div>
@@ -72,4 +77,16 @@
     </form>
 </div>
 
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+    {# $(document).ready(function() - 화면이 로드된 다음 자동으로 호출되는 제이쿼리 함수 #}
+        $(".delete").on('click', function() {
+            if(confirm("정말로 삭제하시겠습니까?")) {
+                location.href = $(this).data('uri');
+            }
+        });
+    });
+</script>
 {% endblock %}
