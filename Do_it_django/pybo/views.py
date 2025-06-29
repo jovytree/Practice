@@ -4,6 +4,8 @@ from .models import Question
 from django.utils import timezone
 from .forms import QuestionForm, AnswerForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def index(request):
@@ -49,21 +51,7 @@ def detail(request, question_id):
     context = {'question': question}
     return render(request, 'pybo/question_detail.html', context)
 
-def answer_create(request, question_id):
-    """
-    pybo 답변 등록
-    """
-    question = get_object_or_404(Question, pk=question_id)
-    question.answer_set.create(content=request.POST.get('content'),
-                               create_date=timezone.now())
-    # question.answer_set.create : Answer 모델이 Question 모델을 Foreing Key로 참조하고 있어서 쓸 수 있다.
-                                # Question 모델을 통해 Answer 모델 데이터를 생성하겠다.
-    # content=request.POST.get('content') : request 매개변수에는 detail.html에서 textarea에 입력된 데이터가 파이썬 객체에 담겨 넘어오는데,
-                                        # 이 값을 추출하기 위한 코드다. POST 형식으로 전송된 form 데이터 항목 중 name이 content인 값.
-    return redirect('pybo:detail', question_id=question_id)
-    # 답변 생성 후 상세 화면 호출. redirect 함수 첫 번째 인수에는 이동할 페이지의 별칭을,
-    # 두 번째 인수에는 해당 URL에 전달해야 하는 값을 입력한다.
-
+@login_required(login_url='common:login')
 def question_create(request):
     """
     pybo 질문 등록
@@ -76,6 +64,7 @@ def question_create(request):
             question = form.save(commit=False) # commit=Flase 는 임시저장을 한다는 뜻이다.
             # 폼에 현재 subject, content 필드만 있고 create_date 필드는 없으므로 임시저장 후
             # question 객체를 반환받아 create_date 에 값을 설정한 뒤 question.save()로 실제 저장한다.
+            question.author = request.user # 추가한 속성 author 적용
             question.create_date = timezone.now()
             question.save()
             return redirect('pybo:index')
@@ -84,6 +73,7 @@ def question_create(request):
     context = {'form': form}
     return render(request, 'pybo/question_form.html', context)
 
+@login_required(login_url='common:login')
 def answer_create(request, question_id):
     """
     pybo 답변 등록
@@ -93,6 +83,7 @@ def answer_create(request, question_id):
         form = AnswerForm(request.POST)
         if form.is_valid():
             answer = form.save(commit=False)
+            answer.author = request.user # 추가한 author 속성 적용
             answer.create_date = timezone.now()
             answer.question = question
             answer.save()

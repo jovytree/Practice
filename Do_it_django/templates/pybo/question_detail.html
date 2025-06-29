@@ -55,6 +55,7 @@
         <!-- 오류 표시 영역 끝 -->
         <div class="form-group">
             <textarea name="content" id="content"
+                      {% if not user.is_authenticated %}disabled{% endif %} {# 로그인 상태가 아니면 답변 창 입력 불가 #}
                       class="form-control" rows="10"></textarea>
         </div>
 
