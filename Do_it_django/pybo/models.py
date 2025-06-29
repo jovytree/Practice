@@ -8,6 +8,9 @@ class Question(models.Model):
     subject = models.CharField(max_length=200)
     content = models.TextField()
     create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True) # null=True : modify_date 칼럼에 null을 허용하겠다.
+                                                # blank=True : form.is_valid()를 통한 입력 폼 데이터 검사 시 값이 없어도 된다.
+    # 수정일시는 수정한 경우에만 생성되는 데이터이므로 null=True, blank=Ture를 지정해서 어떤 조건으로던 값을 비워둘 수 있다록 했다.
 
     def __str__(self):
         return self.subject
@@ -18,4 +21,5 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     content = models.TextField()
     create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
 

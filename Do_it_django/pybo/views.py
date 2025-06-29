@@ -5,6 +5,7 @@ from django.utils import timezone
 from .forms import QuestionForm, AnswerForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 # Create your views here.
@@ -92,3 +93,36 @@ def answer_create(request, question_id):
         form = AnswerForm()
     context = {'question': question, 'form': form}
     return render(request, 'pybo/question_detail.html', context)
+
+@login_required(login_url='common:login')
+def question_modify(request, question_id):
+    """
+    pybo 질문 수정
+    """
+    # 로그인 한 사용자(request.user)와 수정하려는 글쓴이(question.author)가 다르면 오류가 발생하도록 작성
+    # messages 모듈 이용
+    question = get_object_or_404(Question, pk=question_id)
+    if request.user != question.author:
+        messages.error(request, '수정권한이 없습니다.')
+        # messages 모듈은 장고가 제공하는 기능으로, 오류를 임의로 발생시키려는 경우에도 사용된다. 폼 필드와 관련 없으므로 넌필드 오류에 해당됨.
+        return redirect('pybo:detail', question_id=question.id)
+
+    # 질문 수정 화면에서 '저장하기'를 누르면 /pybo/question/modify/2/ 페이지가 POST 방식으로 호출돼 데이터 수정이 이뤄진다.
+    if request.method == "POST":
+        form = QuestionForm(request.POST, instance=question)
+        # form = ... : question을 기본값으로 해서 화면으로 전달받은 입력값들을 덮어써서 QuestionForm을 생성하라는 의미
+        # instance=question : instance 매개변수에 question을 지정하면 기존에 저장돼 있던 제목, 내용 값을 폼에 채울 수 있다.
+        if form.is_valid():
+            question = form.save(commit=False) # commit=False : 메모리상의 객체만 생성, DB에는 아직 저장 안됨.
+            question.author = request.user
+            question.modify_date = timezone.now()
+            question.save()
+            return redirect('pybo:detail', question_id=question.id)
+    else: # 질문상세 화면에서 '수정'을 누르면 /pybo/question/modify/2/ 페이지가 GET 방식으로 호출돼 질문 수정 화면이 나타난다.
+        form = QuestionForm(instance=question) # get 요청으로 기존 값 반영할 때는 request.post 빼고 저렇게만 작성하면 된다.
+    context = {'form': form}
+    # context : views에서 HTML 템플릿으로 데이터를 전달하는 택배상자 역할
+    # 'form' : 템플릿에서 사용할 변수명
+    # form : 실제 전달되는 데이터
+    return render(request, 'pybo/question_form.html', context)
+    # question_form.html 템플릿에 form이라는 이름으로 QuestionForm 객체를 전달한다는 의미

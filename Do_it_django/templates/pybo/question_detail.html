@@ -22,6 +22,13 @@
                 </div>
             </div>
         </div>
+        {# 질문 수정 버튼 추가하기 #}
+        {% if request.user == question.author %} {# 질문 수정버튼은 로그인한 사용자와 글쓴이가 같은 경우에만 보인다. #}
+            <div class="my-3">
+                <a href="{% url 'pybo:question_modify' question.id %}"
+                   class="btn btn-sm btn-outline-secondary">수정</a>
+            </div>
+        {% endif %}
     </div>
     <h5 class="border-bottom my-3 py-2">
         {{ question.answer_set.count }}개의 답변이 있습니다.
